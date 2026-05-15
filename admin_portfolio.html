@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manage Portfolio – Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a class="nav-logo" href="/"><img src="{{ url_for('static', filename='img/logo.svg') }}" alt="Logo" class="logo-img"><span class="logo-text">AI<span class="accent">-Solutions</span> <span style="color:var(--text-light);font-size:.8rem;font-weight:400">/ Admin</span></span></a>
+  <div style="display:flex;gap:1rem;align-items:center;"><span style="color:var(--text-muted);font-size:.85rem;"><i class="fas fa-user-shield"></i> Administrator</span><a href="/admin/logout" class="btn-secondary" style="padding:.4rem .9rem;font-size:.85rem;">Logout</a></div>
+</div></nav>
+{% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}<div style="position:fixed;top:82px;right:1.5rem;z-index:1001;">{% for cat,msg in messages %}<div class="flash flash-{{ cat }}" style="background:var(--surface);border:1px solid var(--border);padding:.9rem 1.4rem;border-radius:var(--radius-sm);color:var(--text-bright);display:flex;gap:2rem;align-items:center;box-shadow:var(--shadow-md);margin-bottom:.5rem;"><span>{{msg}}</span><button onclick="this.parentElement.remove()" style="background:none;border:none;color:var(--text-muted);cursor:pointer;"><i class="fas fa-times"></i></button></div>{% endfor %}</div>{% endif %}{% endwith %}
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <div class="sidebar-logo"><img src="{{ url_for('static', filename='img/logo.svg') }}" alt="" style="height:18px;filter:brightness(0) invert(.5);"> Admin Panel</div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">Overview</div>
+      <a href="/admin"><i class="fas fa-chart-pie"></i> Dashboard</a>
+      <a href="/"><i class="fas fa-globe"></i> View Website</a>
+      <div class="sidebar-section">Content</div>
+      <a href="/admin/portfolio" class="active"><i class="fas fa-briefcase"></i> Portfolio</a>
+      <a href="/admin/events"><i class="fas fa-calendar-days"></i> Events</a>
+      <div class="sidebar-section">Account</div>
+      <a href="/admin/logout"><i class="fas fa-right-from-bracket"></i> Logout</a>
+    </nav>
+  </aside>
+  <main class="admin-main">
+    <div class="admin-header" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <div><h1>Portfolio</h1><p>Manage case studies and project showcases visible on the website.</p></div>
+      <a href="/admin/portfolio/add" class="btn-add"><i class="fas fa-plus"></i> Add Item</a>
+    </div>
+    <div class="table-wrap">
+      <div class="table-wrap-header"><h3>Portfolio Items</h3><span class="badge badge-blue">{{ items|length }} total</span></div>
+      <table class="admin-table">
+        <thead><tr><th>#</th><th>Title</th><th>Industry</th><th>Featured</th><th>Actions</th></tr></thead>
+        <tbody>
+          {% for item in items %}
+          <tr>
+            <td style="color:var(--text-light);">{{ item.id }}</td>
+            <td><strong style="color:var(--text-bright);">{{ item.title }}</strong><br/><span style="color:var(--text-light);font-size:.78rem;">{{ item.description[:80] }}…</span></td>
+            <td><span class="badge badge-purple">{{ item.industry }}</span></td>
+            <td>{% if item.featured %}<span class="badge badge-blue">Yes</span>{% else %}<span style="color:var(--text-light);font-size:.8rem;">No</span>{% endif %}</td>
+            <td style="display:flex;gap:.4rem;">
+              <a href="/admin/portfolio/edit/{{ item.id }}" class="btn-sm btn-edit"><i class="fas fa-pencil"></i> Edit</a>
+              <form method="POST" action="/admin/portfolio/delete/{{ item.id }}" style="display:inline;" onsubmit="return confirm('Delete this portfolio item?')">
+                <button type="submit" class="btn-sm btn-del"><i class="fas fa-trash"></i> Delete</button>
+              </form>
+            </td>
+          </tr>
+          {% else %}
+          <tr><td colspan="5" style="text-align:center;color:var(--text-light);padding:3rem;">No portfolio items yet. <a href="/admin/portfolio/add" style="color:var(--primary);">Add one now.</a></td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+<script>document.querySelectorAll('.flash').forEach(el=>setTimeout(()=>el.remove(),5000));</script>
+</body></html>

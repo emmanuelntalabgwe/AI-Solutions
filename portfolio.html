@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Portfolio – AI-Solutions{% endblock %}
+{% block content %}
+<div class="page-hero">
+  <div class="section-label">Our Work</div>
+  <h1>Project Portfolio</h1>
+  <p>Real results from real clients — see how AI-Solutions has transformed the digital employee experience across industries.</p>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    {% if items %}
+      <div class="grid-2" style="gap:2rem;">
+        {% for item in items %}
+        <div class="portfolio-card reveal">
+          <div class="portfolio-icon">
+            <i class="fas {{ item.icon }}"></i>
+          </div>
+          <span class="industry-tag">{{ item.industry }}</span>
+          {% if item.featured %}
+            <span class="badge badge-blue" style="margin-left:.5rem;">Featured</span>
+          {% endif %}
+          <h3>{{ item.title }}</h3>
+          <p style="color:var(--text-muted);line-height:1.8;font-size:.95rem;">{{ item.description }}</p>
+          {% if item.outcome %}
+          <div class="outcome">
+            <i class="fas fa-chart-line" style="margin-right:.4rem;"></i>{{ item.outcome }}
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div style="text-align:center;padding:6rem 2rem;border:1px dashed var(--border);border-radius:var(--radius-lg);">
+        <div style="font-size:3rem;color:var(--text-light);margin-bottom:1rem;"><i class="fas fa-folder-open"></i></div>
+        <h3 style="color:var(--text-muted);font-family:'Outfit',sans-serif;">No portfolio items yet</h3>
+        <p style="color:var(--text-light);margin-top:.5rem;">Check back soon — or <a href="/contact" style="color:var(--primary);">get in touch</a> to start your project.</p>
+      </div>
+    {% endif %}
+
+    <div style="text-align:center;margin-top:5rem;" class="reveal">
+      <div class="card" style="padding:4rem 2rem;background:radial-gradient(circle at top,rgba(56,189,248,0.08),transparent 70%),var(--surface);text-align:center;">
+        <h2 style="font-family:'Outfit',sans-serif;font-size:2rem;font-weight:800;margin-bottom:1rem;">Ready to be our next success story?</h2>
+        <p style="color:var(--text-muted);max-width:520px;margin:0 auto 2rem;line-height:1.8;">Tell us your challenge and we'll build a bespoke AI-powered solution tailored to your organisation.</p>
+        <a href="/contact" class="btn-primary"><i class="fas fa-paper-plane"></i> Start Your Project</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

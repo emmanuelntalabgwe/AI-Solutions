@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enquiry #{{ inquiry.id }} – Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a class="nav-logo" href="/"><img src="{{ url_for('static', filename='img/logo.svg') }}" alt="Logo" class="logo-img"><span class="logo-text">AI<span class="accent">-Solutions</span> <span style="color:var(--text-light);font-size:.8rem;font-weight:400">/ Admin</span></span></a>
+  <div style="display:flex;gap:1rem;align-items:center;"><span style="color:var(--text-muted);font-size:.85rem;"><i class="fas fa-user-shield"></i> Administrator</span><a href="/admin/logout" class="btn-secondary" style="padding:.4rem .9rem;font-size:.85rem;">Logout</a></div>
+</div></nav>
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <div class="sidebar-logo"><img src="{{ url_for('static', filename='img/logo.svg') }}" alt="" style="height:18px;filter:brightness(0) invert(.5);"> Admin Panel</div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">Overview</div>
+      <a href="/admin" class="active"><i class="fas fa-chart-pie"></i> Dashboard</a>
+      <a href="/"><i class="fas fa-globe"></i> View Website</a>
+      <div class="sidebar-section">Content</div>
+      <a href="/admin/portfolio"><i class="fas fa-briefcase"></i> Portfolio</a>
+      <a href="/admin/events"><i class="fas fa-calendar-days"></i> Events</a>
+      <div class="sidebar-section">Account</div>
+      <a href="/admin/logout"><i class="fas fa-right-from-bracket"></i> Logout</a>
+    </nav>
+  </aside>
+  <main class="admin-main">
+    <div style="margin-bottom:1.5rem;">
+      <a href="/admin" style="color:var(--primary);text-decoration:none;font-size:.9rem;font-weight:600;"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+    </div>
+    <div class="admin-header">
+      <h1>Enquiry #{{ inquiry.id }}</h1>
+      <p>Submitted: {{ inquiry.submitted_at }}</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.5rem;">
+      <div class="stat-card">
+        <div style="font-size:.72rem;color:var(--text-light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;font-weight:600;">Full Name</div>
+        <div style="font-size:1.1rem;font-weight:600;color:var(--text-bright);">{{ inquiry.name }}</div>
+      </div>
+      <div class="stat-card">
+        <div style="font-size:.72rem;color:var(--text-light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;font-weight:600;">Email Address</div>
+        <div style="font-size:1.1rem;font-weight:600;color:var(--primary);">{{ inquiry.email }}</div>
+      </div>
+      <div class="stat-card">
+        <div style="font-size:.72rem;color:var(--text-light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;font-weight:600;">Phone Number</div>
+        <div style="font-size:1.1rem;font-weight:600;color:var(--text-bright);">{{ inquiry.phone }}</div>
+      </div>
+      <div class="stat-card">
+        <div style="font-size:.72rem;color:var(--text-light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;font-weight:600;">Company</div>
+        <div style="font-size:1.1rem;font-weight:600;color:var(--text-bright);">{{ inquiry.company }}</div>
+      </div>
+      <div class="stat-card">
+        <div style="font-size:.72rem;color:var(--text-light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;font-weight:600;">Country</div>
+        <div style="font-size:1.1rem;font-weight:600;color:var(--text-bright);">{{ inquiry.country }}</div>
+      </div>
+      <div class="stat-card">
+        <div style="font-size:.72rem;color:var(--text-light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;font-weight:600;">Job Title</div>
+        <div style="font-size:1.1rem;font-weight:600;color:var(--text-bright);">{{ inquiry.job_title }}</div>
+      </div>
+    </div>
+
+    <div class="table-wrap" style="margin-bottom:1.5rem;">
+      <div class="table-wrap-header"><h3>Job / Project Details</h3></div>
+      <div style="padding:1.5rem;color:var(--text);line-height:1.9;font-size:.95rem;white-space:pre-wrap;">{{ inquiry.job_details }}</div>
+    </div>
+
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="mailto:{{ inquiry.email }}" class="btn-primary"><i class="fas fa-reply"></i> Reply via Email</a>
+      <form method="POST" action="/admin/delete/{{ inquiry.id }}" onsubmit="return confirm('Delete this enquiry permanently?')">
+        <button type="submit" class="btn-secondary" style="border-color:rgba(244,63,94,0.3);color:var(--error);"><i class="fas fa-trash"></i> Delete Enquiry</button>
+      </form>
+    </div>
+  </main>
+</div>
+</body></html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ action }} Event – Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a class="nav-logo" href="/"><img src="{{ url_for('static', filename='img/logo.svg') }}" alt="Logo" class="logo-img"><span class="logo-text">AI<span class="accent">-Solutions</span> <span style="color:var(--text-light);font-size:.8rem;font-weight:400">/ Admin</span></span></a>
+  <div style="display:flex;gap:1rem;align-items:center;"><a href="/admin/logout" class="btn-secondary" style="padding:.4rem .9rem;font-size:.85rem;">Logout</a></div>
+</div></nav>
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <div class="sidebar-logo"><img src="{{ url_for('static', filename='img/logo.svg') }}" alt="" style="height:18px;filter:brightness(0) invert(.5);"> Admin Panel</div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">Overview</div>
+      <a href="/admin"><i class="fas fa-chart-pie"></i> Dashboard</a>
+      <a href="/"><i class="fas fa-globe"></i> View Website</a>
+      <div class="sidebar-section">Content</div>
+      <a href="/admin/portfolio"><i class="fas fa-briefcase"></i> Portfolio</a>
+      <a href="/admin/events" class="active"><i class="fas fa-calendar-days"></i> Events</a>
+      <div class="sidebar-section">Account</div>
+      <a href="/admin/logout"><i class="fas fa-right-from-bracket"></i> Logout</a>
+    </nav>
+  </aside>
+  <main class="admin-main">
+    <div style="margin-bottom:1.5rem;"><a href="/admin/events" style="color:var(--primary);text-decoration:none;font-size:.9rem;font-weight:600;"><i class="fas fa-arrow-left"></i> Back to Events</a></div>
+    <div class="admin-header"><h1>{{ action }} Event</h1><p>{% if action == 'Edit' %}Update this upcoming event.{% else %}Add a new upcoming event to the website.{% endif %}</p></div>
+    <div class="table-wrap" style="max-width:700px;">
+      <div class="table-wrap-header"><h3>Event Details</h3></div>
+      <div style="padding:2rem;">
+        <form method="POST">
+          <div class="form-group">
+            <label for="ev_title">Event Title <span style="color:var(--error)">*</span></label>
+            <input type="text" id="ev_title" name="title" placeholder="e.g. AI-Solutions Product Showcase" required value="{{ event.title if event else '' }}"/>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ev_location">Location <span style="color:var(--error)">*</span></label>
+              <input type="text" id="ev_location" name="location" placeholder="e.g. Sunderland Software Centre" required value="{{ event.location if event else '' }}"/>
+            </div>
+            <div class="form-group">
+              <label for="ev_date">Event Date <span style="color:var(--error)">*</span></label>
+              <input type="date" id="ev_date" name="event_date" required value="{{ event.event_date if event else '' }}"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="ev_desc">Description <span style="color:var(--error)">*</span></label>
+            <textarea id="ev_desc" name="description" placeholder="Describe the event, what attendees can expect…" required style="min-height:120px;">{{ event.description if event else '' }}</textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ev_icon">Icon (FontAwesome class)</label>
+              <input type="text" id="ev_icon" name="icon" placeholder="fa-rocket" value="{{ event.icon if event else 'fa-calendar' }}"/>
+            </div>
+            <div class="form-group">
+              <label for="ev_color">Accent Color</label>
+              <select id="ev_color" name="color">
+                {% for c in ['primary','secondary','warning','success','error'] %}
+                <option value="{{ c }}" {% if event and event.color == c %}selected{% endif %}>{{ c|capitalize }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div style="display:flex;gap:1rem;margin-top:.5rem;">
+            <button type="submit" class="btn-primary"><i class="fas fa-save"></i> {{ action }} Event</button>
+            <a href="/admin/events" class="btn-secondary">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

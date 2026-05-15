@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %}Contact Us – AI-Solutions{% endblock %}
+{% block content %}
+<div class="page-hero">
+  <div class="section-label">Get in Touch</div>
+  <h1>Contact AI-Solutions</h1>
+  <p>Tell us about your job requirements and our team will respond with an AI-powered solution tailored for your organisation.</p>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="contact-wrap">
+      <div class="contact-info reveal">
+        <h2>Let's Talk About Your Project</h2>
+        <div class="divider"></div>
+        <p>Whether you're looking to deploy an AI virtual assistant, automate workflows, or prototype a new digital solution, we'd love to hear from you. Fill in the form with as much detail as possible about your requirements and one of our consultants will be in touch within 1 business day.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><i class="fas fa-location-dot"></i></div>
+          <div><strong>Headquarters</strong><p>Sunderland Software Centre, Sunderland, SR1 3AA, UK</p></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
+          <div><strong>Email</strong><p>hello@ai-solutions.co.uk</p></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><i class="fas fa-phone"></i></div>
+          <div><strong>Phone</strong><p>+44 (0)191 555 0100</p></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon"><i class="fas fa-clock"></i></div>
+          <div><strong>Office Hours</strong><p>Monday–Friday, 09:00–17:30 GMT</p></div>
+        </div>
+        <div style="margin-top:2.5rem;padding:1.5rem;background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius-md)">
+          <p style="font-size:.8rem;color:var(--text-light);margin-bottom:.5rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em">Response time</p>
+          <p style="color:var(--primary);font-size:1.15rem;font-weight:700"><i class="fas fa-bolt-lightning"></i> Usually within 4 hours</p>
+        </div>
+      </div>
+
+      <div class="contact-form reveal">
+        <h3 style="font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:.5rem;color:#000">Send Us Your Enquiry</h3>
+        <p style="color:var(--text-muted);font-size:.9rem;margin-bottom:2rem">All fields are required. No account needed.</p>
+        <form method="POST" action="/contact" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required/>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="jane@company.com" required/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="+44 7700 900000" required/>
+            </div>
+            <div class="form-group">
+              <label for="company">Company Name</label>
+              <input type="text" id="company" name="company" placeholder="Acme Corp" required/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="country">Country</label>
+              <select id="country" name="country" required>
+                <option value="">Select country…</option>
+                <option>United Kingdom</option>
+                <option>United States</option>
+                <option>Germany</option>
+                <option>France</option>
+                <option>Australia</option>
+                <option>Canada</option>
+                <option>Singapore</option>
+                <option>India</option>
+                <option>UAE</option>
+                <option>South Africa</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="job_title">Job Title</label>
+              <input type="text" id="job_title" name="job_title" placeholder="CTO / IT Director" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="job_details">Job / Project Details</label>
+            <textarea id="job_details" name="job_details" placeholder="Please describe your requirements, challenges, and what you're hoping to achieve with AI-Solutions…" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:1rem">
+            <i class="fas fa-paper-plane"></i> Submit Enquiry
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

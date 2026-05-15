@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ action }} Portfolio Item – Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+</head>
+<body>
+<nav class="navbar"><div class="nav-container">
+  <a class="nav-logo" href="/"><img src="{{ url_for('static', filename='img/logo.svg') }}" alt="Logo" class="logo-img"><span class="logo-text">AI<span class="accent">-Solutions</span> <span style="color:var(--text-light);font-size:.8rem;font-weight:400">/ Admin</span></span></a>
+  <div style="display:flex;gap:1rem;align-items:center;"><a href="/admin/logout" class="btn-secondary" style="padding:.4rem .9rem;font-size:.85rem;">Logout</a></div>
+</div></nav>
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <div class="sidebar-logo"><img src="{{ url_for('static', filename='img/logo.svg') }}" alt="" style="height:18px;filter:brightness(0) invert(.5);"> Admin Panel</div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">Overview</div>
+      <a href="/admin"><i class="fas fa-chart-pie"></i> Dashboard</a>
+      <a href="/"><i class="fas fa-globe"></i> View Website</a>
+      <div class="sidebar-section">Content</div>
+      <a href="/admin/portfolio" class="active"><i class="fas fa-briefcase"></i> Portfolio</a>
+      <a href="/admin/events"><i class="fas fa-calendar-days"></i> Events</a>
+      <div class="sidebar-section">Account</div>
+      <a href="/admin/logout"><i class="fas fa-right-from-bracket"></i> Logout</a>
+    </nav>
+  </aside>
+  <main class="admin-main">
+    <div style="margin-bottom:1.5rem;"><a href="/admin/portfolio" style="color:var(--primary);text-decoration:none;font-size:.9rem;font-weight:600;"><i class="fas fa-arrow-left"></i> Back to Portfolio</a></div>
+    <div class="admin-header"><h1>{{ action }} Portfolio Item</h1><p>{% if action == 'Edit' %}Update the details of this case study.{% else %}Add a new project or case study to the public portfolio.{% endif %}</p></div>
+    <div class="table-wrap" style="max-width:720px;">
+      <div class="table-wrap-header"><h3>{{ action }} Item</h3></div>
+      <div style="padding:2rem;">
+        <form method="POST">
+          <div class="form-group">
+            <label for="title">Title <span style="color:var(--error)">*</span></label>
+            <input type="text" id="title" name="title" placeholder="e.g. NHS Trust Reduces IT Tickets by 68%" required value="{{ item.title if item else '' }}"/>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="industry">Industry <span style="color:var(--error)">*</span></label>
+              <select id="industry" name="industry" required>
+                {% for ind in ['Healthcare','Financial Services','Manufacturing','Education','Retail','Public Sector','Technology','Other'] %}
+                <option value="{{ ind }}" {% if item and item.industry == ind %}selected{% endif %}>{{ ind }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="icon">Icon (FontAwesome class)</label>
+              <input type="text" id="icon" name="icon" placeholder="fa-chart-bar" value="{{ item.icon if item else 'fa-chart-bar' }}"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="description">Description <span style="color:var(--error)">*</span></label>
+            <textarea id="description" name="description" placeholder="Describe the project, challenge, and how AI-Solutions helped…" required style="min-height:140px;">{{ item.description if item else '' }}</textarea>
+          </div>
+          <div class="form-group">
+            <label for="outcome">Key Outcomes</label>
+            <input type="text" id="outcome" name="outcome" placeholder="e.g. 68% ticket reduction · £240K annual savings · 90 days to deploy" value="{{ item.outcome if item else '' }}"/>
+          </div>
+          <div class="form-group" style="display:flex;align-items:center;gap:.75rem;">
+            <input type="checkbox" id="featured" name="featured" style="width:18px;height:18px;accent-color:var(--primary);" {% if item and item.featured %}checked{% endif %}/>
+            <label for="featured" style="margin:0;cursor:pointer;">Feature this item (displayed prominently on the portfolio page)</label>
+          </div>
+          <div style="display:flex;gap:1rem;margin-top:1.5rem;">
+            <button type="submit" class="btn-primary"><i class="fas fa-save"></i> {{ action }} Item</button>
+            <a href="/admin/portfolio" class="btn-secondary">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

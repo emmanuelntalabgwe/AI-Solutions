@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+{% block title %}AI-Solutions – Redefining the Digital Employee Experience{% endblock %}
+{% block content %}
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content reveal">
+      <div class="section-label" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: var(--text-bright);">
+        <i class="fas fa-sparkles" style="color: var(--primary);"></i> AI-Powered Operations
+      </div>
+      <h1 class="hero-title">
+        Future-proof your<br/>
+        <span class="gradient-text-accent">Digital Employee</span><br/>
+        Experience.
+      </h1>
+      <p class="hero-desc">
+        We craft state-of-the-art artificial intelligence to instantly resolve workforce bottlenecks, accelerating design, engineering, and innovation on a global scale.
+      </p>
+      <div class="hero-actions">
+        <a href="/solutions" class="btn-primary">Explore Platform</a>
+        <a href="/contact" class="btn-secondary">Book a Demo</a>
+      </div>
+    </div>
+    
+    <div class="hero-visual reveal">
+      <div class="hero-bento">
+        <!-- Main Chat Box -->
+        <div class="bento-card large">
+          <div class="ai-pulse"><img src="{{ url_for('static', filename='img/logo.svg') }}" alt="Logo" style="width:70%; height:70%; object-fit:contain;"></div>
+          <div class="chat-line">
+            <div class="chat-bubble">How can AI improve our onboarding process?</div>
+          </div>
+          <div class="chat-line bot">
+            <div class="chat-bubble">I can automate 80% of manual HR steps and reduce time-to-productivity by 3× using tailored workflows.</div>
+          </div>
+        </div>
+        
+        <!-- Stat Box 1 -->
+        <div class="bento-card" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
+          <div style="font-family: 'Outfit'; font-size: 2.5rem; font-weight: 800; color: var(--text-bright);">98%</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Resolution Rate</div>
+        </div>
+        
+        <!-- Stat Box 2 -->
+        <div class="bento-card" style="text-align: center; display: flex; flex-direction: column; justify-content: center; background: radial-gradient(circle at bottom right, rgba(56,189,248,0.15), transparent);">
+          <div style="font-family: 'Outfit'; font-size: 2.5rem; font-weight: 800; color: var(--primary);">3×</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Faster Delivery</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS MARQUEE -->
+<section style="padding: 2rem 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); background: rgba(0,0,0,0.2); overflow: hidden;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; opacity: 0.6;">
+    <div class="client-logo">HealthTech</div>
+    <div class="client-logo">FinServe</div>
+    <div class="client-logo">RetailX</div>
+    <div class="client-logo">EduCloud</div>
+    <div class="client-logo">ManuAI</div>
+    <div class="client-logo">GovDigital</div>
+  </div>
+</section>
+
+<!-- SOLUTIONS OVERVIEW -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header centered reveal">
+      <div class="section-label">Enterprise Platform</div>
+      <h2 class="section-title">Architected for the modern workforce.</h2>
+      <p class="section-sub">From conversational agents to deep predictive analytics, our suite is designed to seamlessly integrate and instantly perform.</p>
+    </div>
+    
+    <div class="grid-3">
+      <div class="card reveal">
+        <div class="card-icon icon-blue"><i class="fas fa-robot"></i></div>
+        <h3>AI Virtual Assistant</h3>
+        <p>Deploy intelligent agents that resolve employee queries 24/7, slashing IT ticket volumes by up to 70% while learning from every interaction.</p>
+      </div>
+      
+      <div class="card reveal">
+        <div class="card-icon icon-purple"><i class="fas fa-bolt"></i></div>
+        <h3>Rapid Prototyping</h3>
+        <p>Transform conceptual ideas into production-ready AI demos in days. Accelerate digital transformation without the massive upfront capital.</p>
+      </div>
+      
+      <div class="card reveal">
+        <div class="card-icon icon-green"><i class="fas fa-chart-network"></i></div>
+        <h3>Predictive Analytics</h3>
+        <p>Monitor your Digital Employee Experience score in real-time. Identify and resolve bottlenecks before they impact your workforce.</p>
+      </div>
+      
+      <div class="card reveal">
+        <div class="card-icon icon-orange"><i class="fas fa-link"></i></div>
+        <h3>Workflow Automation</h3>
+        <p>Bridge the gap between ITSM, HR, and communication silos with intelligent automation that runs silently in the background.</p>
+      </div>
+      
+      <div class="card reveal">
+        <div class="card-icon icon-blue"><i class="fas fa-shield-halved"></i></div>
+        <h3>Enterprise Security</h3>
+        <p>Built on a foundation of trust. ISO 27001 aligned, GDPR compliant, and engineered to keep your proprietary data secure.</p>
+      </div>
+      
+      <div class="card reveal">
+        <div class="card-icon icon-purple"><i class="fas fa-earth-americas"></i></div>
+        <h3>Global Scale</h3>
+        <p>Multi-region architecture with native multi-language support ensures your global workforce gets a unified, premium experience.</p>
+      </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 4rem;" class="reveal">
+      <a href="/solutions" class="btn-secondary">View Complete Feature Set</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section" style="background: rgba(255,255,255,0.01); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="section-inner">
+    <div class="grid-2">
+      <div class="reveal">
+        <div class="section-label">The AI-Solutions Edge</div>
+        <h2 class="section-title">Built by engineers, designed for people.</h2>
+        <p class="section-sub" style="margin-bottom: 3rem;">We don't just supply software; we engineer bespoke paradigms for your industry's unique challenges.</p>
+        
+        <div class="feature-list">
+          <div class="feature-card">
+            <i class="fas fa-layer-group" style="color: var(--primary)"></i>
+            <div>
+              <h3 style="color: var(--text-bright); font-family: 'Outfit'; font-size: 1.2rem; margin-bottom: 0.5rem;">Domain-Specific Models</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Pre-trained logic fine-tuned for healthcare, finance, manufacturing, and the public sector.</p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-code-commit" style="color: var(--secondary)"></i>
+            <div>
+              <h3 style="color: var(--text-bright); font-family: 'Outfit'; font-size: 1.2rem; margin-bottom: 0.5rem;">Seamless Integration</h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Plug-and-play architecture connects directly to your existing ITSM and identity providers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mission-card reveal">
+        <div class="ai-pulse" style="margin-bottom: 2rem;"><i class="fas fa-quote-left"></i></div>
+        <p class="mission-quote">"To innovate, promote, and deliver the future of the digital employee experience — keeping the human element at the core of AI."</p>
+        <p style="color: var(--text-muted); line-height: 1.7;">This commitment drives our global expansion, ensuring measurable worldwide impact on how millions experience work every single day.</p>
+        
+        <div class="mission-stats">
+          <div class="m-stat">
+            <div class="m-stat-val">6+</div>
+            <div class="m-stat-lbl">Sectors</div>
+          </div>
+          <div class="m-stat">
+            <div class="m-stat-val" style="color: var(--primary);">15+</div>
+            <div class="m-stat-lbl">Nations</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header centered reveal">
+      <div class="section-label">Proven Impact</div>
+      <h2 class="section-title">Trusted by industry leaders.</h2>
+    </div>
+    <div class="testimonials-track">
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"AI-Solutions transformed our IT support desk overnight. The virtual assistant handles 80% of queries without human intervention — our staff are finally focused on what matters."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar"><i class="fas fa-user-tie"></i></div>
+          <div><div class="author-name">Sarah Mitchell</div><div class="author-role">CTO, HealthTech UK</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"The rapid prototyping service saved us 4 months of dev time. We went from concept to a working demo in under 2 weeks with a fraction of the budget."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar"><i class="fas fa-fingerprint"></i></div>
+          <div><div class="author-name">James Okafor</div><div class="author-role">Head of Innovation, FinServe</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Outstanding engineering partner. The predictive DEX analytics have become an indispensable part of our daily operations and strategic planning."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar"><i class="fas fa-code-branch"></i></div>
+          <div><div class="author-name">Priya Sharma</div><div class="author-role">Digital Director, EduCloud</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="padding-bottom: 10rem;">
+  <div class="section-inner">
+    <div class="card reveal" style="text-align: center; padding: 6rem 2rem; background: radial-gradient(circle at top, rgba(56,189,248,0.1), transparent 70%), var(--surface);">
+      <h2 style="font-family: 'Outfit'; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; margin-bottom: 1.5rem; color: var(--text-bright); letter-spacing: -0.02em;">Ready to transform your workforce?</h2>
+      <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 3rem; font-size: 1.15rem; line-height: 1.7;">Tell us about your operational challenges. Our engineers will reach back with an AI-powered solution tailored precisely to your organisation.</p>
+      <a href="/contact" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Start the Conversation</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

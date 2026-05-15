@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="AI-Solutions – Leveraging AI to transform the digital employee experience. Based in Sunderland, UK."/>
+  <title>{% block title %}AI-Solutions{% endblock %}</title>
+  
+  <!-- Preconnect and Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='img/logo.svg') }}"/>
+  
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <!-- Ambient Premium Background -->
+  <div class="grain-overlay"></div>
+  <div class="ambient-bg">
+    <div class="ambient-blob"></div>
+    <div class="ambient-blob blob-2"></div>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a class="nav-logo" href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="AI-Solutions Logo" class="logo-img">
+        <span class="logo-text">AI<span class="accent">-Solutions</span></span>
+      </a>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="{{ url_for('index') }}" class="nav-link {% if request.endpoint == 'index' %}active{% endif %}">Home</a></li>
+        <li><a href="{{ url_for('solutions') }}" class="nav-link {% if request.endpoint == 'solutions' %}active{% endif %}">Solutions</a></li>
+        <li><a href="{{ url_for('portfolio') }}" class="nav-link {% if request.endpoint == 'portfolio' %}active{% endif %}">Portfolio</a></li>
+        <li><a href="{{ url_for('articles') }}" class="nav-link {% if request.endpoint == 'articles' %}active{% endif %}">Insights</a></li>
+        <li><a href="{{ url_for('gallery') }}" class="nav-link {% if request.endpoint == 'gallery' %}active{% endif %}">Gallery</a></li>
+        <li><a href="{{ url_for('feedback') }}" class="nav-link {% if request.endpoint == 'feedback' %}active{% endif %}">Feedback</a></li>
+      </ul>
+
+      <a href="{{ url_for('contact') }}" class="nav-cta {% if request.endpoint == 'contact' %}active{% endif %}">Start Project</a>
+      
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== FLASH MESSAGES ===== -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-container" style="position: fixed; top: 100px; right: 2rem; z-index: 1001; display: flex; flex-direction: column; gap: 0.5rem;">
+        {% for cat, msg in messages %}
+          <div class="flash flash-{{ cat }}" style="background: var(--surface); backdrop-filter: blur(10px); border: 1px solid var(--border); padding: 1rem 1.5rem; border-radius: var(--radius-sm); color: var(--text-bright); display: flex; align-items: center; justify-content: space-between; gap: 2rem; box-shadow: var(--shadow-md);">
+            <span>{{ msg }}</span>
+            <button class="flash-close" onclick="this.parentElement.remove()" style="background: none; border: none; color: var(--text-muted); cursor: pointer;"><i class="fas fa-times"></i></button>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <!-- ===== MAIN ===== -->
+  <main>{% block content %}{% endblock %}</main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-logo" href="{{ url_for('index') }}" style="margin-bottom:1.5rem; display: inline-flex;">
+          <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="AI-Solutions Logo" class="logo-img">
+          <span class="logo-text">AI<span class="accent">-Solutions</span></span>
+        </a>
+        <p>Innovating the digital employee experience from Sunderland to the world. Designing the future of human-AI collaboration at work.</p>
+        <div class="footer-socials">
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Platform</h4>
+        <a href="{{ url_for('solutions') }}">AI Virtual Assistant</a>
+        <a href="{{ url_for('solutions') }}">Rapid Prototyping</a>
+        <a href="{{ url_for('solutions') }}">DEX Analytics</a>
+        <a href="{{ url_for('portfolio') }}">Portfolio</a>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <a href="{{ url_for('articles') }}">Insights & News</a>
+        <a href="{{ url_for('gallery') }}">Media Gallery</a>
+        <a href="{{ url_for('feedback') }}">Client Feedback</a>
+        <a href="{{ url_for('admin_login') }}" style="color: var(--text-light); margin-top: 1rem;">Admin Portal</a>
+      </div>
+      <div class="footer-links">
+        <h4>Connect</h4>
+        <a href="{{ url_for('contact') }}">Contact Sales</a>
+        <a href="mailto:hello@ai-solutions.co.uk">hello@ai-solutions.co.uk</a>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 1rem;">Sunderland Software Centre<br/>SR1 3AA, UK</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p>© 2024 AI-Solutions Ltd. All rights reserved.</p>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#" style="font-size: 0.85rem; color: var(--text-muted);">Privacy Policy</a>
+          <a href="#" style="font-size: 0.85rem; color: var(--text-muted);">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

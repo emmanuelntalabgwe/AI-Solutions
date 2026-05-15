@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block title %}Client Feedback – AI-Solutions{% endblock %}
+{% block content %}
+<div class="page-hero">
+  <div class="section-label">Testimonials</div>
+  <h1>Client Success Stories</h1>
+  <p>Read what industry leaders say about their partnership with AI-Solutions and the measurable impact of our digital experience tools.</p>
+</div>
+
+<!-- Stats Bar -->
+{% if total_reviews > 0 %}
+<div style="background:rgba(56,189,248,0.05);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem;">
+  <div style="max-width:800px;margin:0 auto;display:flex;gap:3rem;justify-content:center;text-align:center;">
+    <div>
+      <div style="font-family:'Outfit',sans-serif;font-size:2.5rem;font-weight:800;color:var(--text-bright);">{{ total_reviews }}</div>
+      <div style="font-size:.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-weight:600;">Total Reviews</div>
+    </div>
+    <div>
+      <div style="font-family:'Outfit',sans-serif;font-size:2.5rem;font-weight:800;color:var(--warning);">{{ avg_rating }}<span style="font-size:1.5rem;">★</span></div>
+      <div style="font-size:.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-weight:600;">Average Rating</div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- Submit Feedback -->
+<section class="section" style="padding:5rem 2rem;">
+  <div class="section-inner" style="max-width:700px;">
+    <div class="card reveal" style="padding:3rem;">
+      <h3 style="font-family:'Outfit',sans-serif;font-size:1.6rem;font-weight:800;margin-bottom:.5rem;">Share Your Experience</h3>
+      <p style="color:var(--text-muted);margin-bottom:2rem;font-size:.95rem;">Your feedback helps us innovate and provide better digital solutions for teams worldwide.</p>
+      <form method="POST" action="/feedback" id="feedbackForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fb_name">Your Name <span style="color:var(--error)">*</span></label>
+            <input type="text" id="fb_name" name="name" placeholder="Jane Smith" required/>
+          </div>
+          <div class="form-group">
+            <label for="fb_company">Company Name <span style="color:var(--error)">*</span></label>
+            <input type="text" id="fb_company" name="company" placeholder="Acme Corp" required/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fb_role">Job Title <span style="color:var(--error)">*</span></label>
+            <input type="text" id="fb_role" name="role" placeholder="e.g. CTO / IT Director" required/>
+          </div>
+          <div class="form-group">
+            <label for="fb_rating">Rating <span style="color:var(--error)">*</span></label>
+            <select id="fb_rating" name="rating" required>
+              <option value="5">★★★★★ Excellent (5/5)</option>
+              <option value="4">★★★★☆ Good (4/5)</option>
+              <option value="3">★★★☆☆ Average (3/5)</option>
+              <option value="2">★★☆☆☆ Below Average (2/5)</option>
+              <option value="1">★☆☆☆☆ Poor (1/5)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="fb_project">Project Name (Optional)</label>
+          <input type="text" id="fb_project" name="project" placeholder="e.g. Virtual Assistant Implementation"/>
+        </div>
+        <div class="form-group">
+          <label for="fb_review">Your Review <span style="color:var(--error)">*</span></label>
+          <textarea id="fb_review" name="review" placeholder="How did AI-Solutions help your organisation? What results did you see?" required style="min-height:130px;"></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;padding:1.1rem;font-size:1rem;">
+          <i class="fas fa-paper-plane"></i> Submit Review
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews Wall -->
+<section class="section" style="padding-top:0;padding-bottom:8rem;">
+  <div class="section-inner">
+    <div class="section-header centered reveal">
+      <div class="section-label">Wall of Love</div>
+      <h2 class="section-title">What Our Clients Say</h2>
+    </div>
+    <div id="reviews-grid" class="grid-2" style="gap:2rem;">
+      {% if feedbacks %}
+        {% for f in feedbacks %}
+        <div class="testimonial-card reveal">
+          <div class="stars" style="font-size:1.1rem;margin-bottom:1rem;letter-spacing:3px;">
+            {% for _ in range(f.rating) %}★{% endfor %}{% for _ in range(5 - f.rating) %}☆{% endfor %}
+          </div>
+          <p class="testimonial-text" style="font-size:1rem;line-height:1.75;min-height:80px;">"{{ f.review }}"</p>
+          <div class="testimonial-author" style="margin-top:auto;">
+            <div class="author-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <div class="author-name">{{ f.name }}</div>
+              <div class="author-role">{{ f.role }}, {{ f.company }}</div>
+            </div>
+          </div>
+          {% if f.project %}
+          <div style="margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:.72rem;color:var(--text-light);font-weight:700;text-transform:uppercase;letter-spacing:.05em;">Project: {{ f.project }}</span>
+            <span class="badge badge-blue">Verified Client</span>
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      {% else %}
+        <div style="grid-column:1/-1;text-align:center;padding:5rem;border:1px dashed var(--border);border-radius:var(--radius-lg);">
+          <div style="font-size:3rem;color:var(--text-light);margin-bottom:1rem;"><i class="fas fa-comment-dots"></i></div>
+          <h3 style="color:var(--text-muted);font-family:'Outfit',sans-serif;font-weight:700;">No reviews yet</h3>
+          <p style="color:var(--text-light);margin-top:.5rem;">Be the first to share your success story!</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // Scroll to reviews after successful submission
+  if (document.querySelector('.flash-success')) {
+    const grid = document.getElementById('reviews-grid');
+    if (grid) setTimeout(() => grid.scrollIntoView({ behavior:'smooth', block:'start' }), 700);
+  }
+</script>
+{% endblock %}

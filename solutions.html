@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}Solutions – AI-Solutions{% endblock %}
+{% block content %}
+<div class="page-hero">
+  <div class="section-label">What We Build</div>
+  <h1>Our AI Software Solutions</h1>
+  <p>From intelligent virtual assistants to predictive analytics — every product is built to accelerate your digital employee experience.</p>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="grid-3">
+      <div class="card reveal">
+        <div class="card-icon icon-blue"><i class="fas fa-robot"></i></div>
+        <h3>AI Virtual Assistant</h3>
+        <p>A conversational AI that resolves employee queries instantly — IT support, HR policies, onboarding help, and more — across any channel.</p>
+        <ul style="margin-top:1.2rem;padding-left:1.2rem;color:var(--text-light);font-size:.88rem;line-height:2">
+          <li>24/7 availability, zero wait times</li>
+          <li>Reduces IT ticket volume by 70%</li>
+          <li>Integrates with Slack, Teams, ServiceNow</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon icon-purple"><i class="fas fa-bolt"></i></div>
+        <h3>Rapid AI Prototyping</h3>
+        <p>Our signature service: turn your concept into a functioning AI-powered prototype within days at a fraction of traditional development costs.</p>
+        <ul style="margin-top:1.2rem;padding-left:1.2rem;color:var(--text-light);font-size:.88rem;line-height:2">
+          <li>Fixed-price packages from £2,500</li>
+          <li>Delivery in 5–10 business days</li>
+          <li>Includes user testing & feedback loop</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon icon-green"><i class="fas fa-chart-line"></i></div>
+        <h3>DEX Analytics Platform</h3>
+        <p>Real-time monitoring of your digital employee experience score with AI-driven root cause analysis and proactive alerting.</p>
+        <ul style="margin-top:1.2rem;padding-left:1.2rem;color:var(--text-light);font-size:.88rem;line-height:2">
+          <li>Live dashboards & trend reports</li>
+          <li>Predictive anomaly detection</li>
+          <li>Integrates with ITSM & endpoint tools</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon icon-orange"><i class="fas fa-link"></i></div>
+        <h3>Workflow Automation Engine</h3>
+        <p>Intelligent process automation that connects your tools and eliminates repetitive tasks, freeing your people to focus on high-value work.</p>
+        <ul style="margin-top:1.2rem;padding-left:1.2rem;color:var(--text-light);font-size:.88rem;line-height:2">
+          <li>No-code automation builder</li>
+          <li>500+ pre-built connectors</li>
+          <li>Audit trails & compliance logging</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon icon-blue"><i class="fas fa-brain"></i></div>
+        <h3>Knowledge Intelligence</h3>
+        <p>AI-powered knowledge base that learns from every interaction, surfaces the right information at the right time, and continuously improves.</p>
+        <ul style="margin-top:1.2rem;padding-left:1.2rem;color:var(--text-light);font-size:.88rem;line-height:2">
+          <li>Self-healing knowledge articles</li>
+          <li>Semantic search powered by LLMs</li>
+          <li>Multi-language support (40+ languages)</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon icon-purple"><i class="fas fa-globe"></i></div>
+        <h3>Global Deployment Suite</h3>
+        <p>Enterprise-grade infrastructure with multi-region, multi-language support — designed for organisations scaling across borders.</p>
+        <ul style="margin-top:1.2rem;padding-left:1.2rem;color:var(--text-light);font-size:.88rem;line-height:2">
+          <li>ISO 27001 & GDPR compliant</li>
+          <li>99.9% SLA uptime guarantee</li>
+          <li>Dedicated customer success manager</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg-alt)">
+  <div class="section-inner">
+    <div class="section-header centered reveal">
+      <div class="section-label">Industries We Serve</div>
+      <h2 class="section-title" style="color:#000">Built for Every Sector</h2>
+    </div>
+    <div class="grid-3">
+      {% for icon, name, desc in [
+        ('fa-hospital','Healthcare','AI triage, staff onboarding automation, and clinical workflow optimisation.'),
+        ('fa-building-columns','Financial Services','Compliance automation, fraud pattern detection, and employee productivity tools.'),
+        ('fa-industry','Manufacturing','Predictive maintenance alerts, shop-floor digital assistants, and safety compliance AI.'),
+        ('fa-graduation-cap','Education','Student & staff support bots, automated admin workflows, and learning analytics.'),
+        ('fa-cart-shopping','Retail','Workforce scheduling AI, omnichannel support bots, and inventory query assistants.'),
+        ('fa-landmark-dome','Public Sector','Citizen-facing chatbots, GDPR-compliant data tools, and internal IT automation.')
+      ] %}
+      <div class="card reveal" style="text-align:center">
+        <div style="font-size:2.5rem;margin-bottom:1.5rem;color:var(--primary)"><i class="fas {{ icon }}"></i></div>
+        <h3 style="color:#000">{{ name }}</h3>
+        <p>{{ desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="card reveal" style="text-align:center;padding:4rem;background:var(--bg-alt);border:1px solid var(--border)">
+      <h2 style="font-family:'Outfit',sans-serif;font-size:2rem;margin-bottom:1.2rem;color:#000">Not sure which solution fits?</h2>
+      <p style="color:var(--text-muted);max-width:480px;margin:0 auto 2.5rem;font-size:1.05rem">Tell us about your challenge and we'll recommend the right product — or build something bespoke for you.</p>
+      <a href="/contact" class="btn-primary"><i class="fas fa-envelope"></i> Talk to Our Team</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

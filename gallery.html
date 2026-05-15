@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Gallery & Events – AI-Solutions{% endblock %}
+{% block content %}
+<div class="page-hero">
+  <div class="section-label">Events & Culture</div>
+  <h1>Photo Gallery</h1>
+  <p>From product launches to global conferences — a visual story of AI-Solutions in action.</p>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+
+    <div class="section-header reveal">
+      <div class="section-label">Past Events</div>
+      <h2 class="section-title">Promotional Highlights</h2>
+    </div>
+    <div class="gallery-grid" style="margin-bottom:5rem;">
+      <div class="gallery-item reveal">
+        <img src="{{ url_for('static', filename='img/ai_summit_sunderland_1776868417602.png') }}" alt="AI Innovation Summit 2023"/>
+        <div class="gallery-overlay"><div class="gallery-info"><span class="gallery-tag">Sunderland</span><h4>AI Innovation Summit 2023</h4></div></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="{{ url_for('static', filename='img/tech_showcase_london_1776868441126.png') }}" alt="DEX Future Showcase"/>
+        <div class="gallery-overlay"><div class="gallery-info"><span class="gallery-tag">London</span><h4>DEX Future Showcase</h4></div></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="{{ url_for('static', filename='img/tech_office_sunderland_1776868456845.png') }}" alt="Product Engineering Sprint"/>
+        <div class="gallery-overlay"><div class="gallery-info"><span class="gallery-tag">Headquarters</span><h4>Product Engineering Sprint</h4></div></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="{{ url_for('static', filename='img/dex_future_work.png') }}" alt="HealthTech Launch Event"/>
+        <div class="gallery-overlay"><div class="gallery-info"><span class="gallery-tag">Partnership</span><h4>HealthTech Launch Event</h4></div></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="{{ url_for('static', filename='img/ai_code_prototype.png') }}" alt="Singapore Office Opening"/>
+        <div class="gallery-overlay"><div class="gallery-info"><span class="gallery-tag">Global</span><h4>Singapore Office Opening</h4></div></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="{{ url_for('static', filename='img/tech_showcase_london_1776868441126.png') }}" alt="NE Digital Awards"/>
+        <div class="gallery-overlay"><div class="gallery-info"><span class="gallery-tag">Awards</span><h4>NE Digital Awards Winner</h4></div></div>
+      </div>
+    </div>
+
+    <div class="section-header reveal">
+      <div class="section-label">What's Coming</div>
+      <h2 class="section-title">Upcoming Events</h2>
+    </div>
+
+    {% if events %}
+    <div class="grid-3">
+      {% for ev in events %}
+      <div class="card reveal">
+        <div style="background:var(--bg-deep);border-radius:12px;padding:2rem;text-align:center;margin-bottom:1.5rem;">
+          <div style="font-size:2.5rem;color:var(--{{ ev.color }});"><i class="fas {{ ev.icon }}"></i></div>
+          <div style="font-family:'Outfit',sans-serif;font-weight:800;color:var(--{{ ev.color }});font-size:1rem;margin-top:.8rem;text-transform:uppercase;letter-spacing:.05em;">{{ ev.event_date }}</div>
+        </div>
+        <h3>{{ ev.title }}</h3>
+        <p style="color:var(--primary);font-size:.88rem;font-weight:600;margin:.3rem 0 1rem;">{{ ev.location }}</p>
+        <p style="font-size:.9rem;line-height:1.7;color:var(--text-muted);">{{ ev.description }}</p>
+        <a href="/contact" class="btn-primary" style="display:inline-flex;margin-top:1.5rem;padding:.7rem 1.4rem;font-size:.875rem;"><i class="fas fa-ticket"></i> Register Interest</a>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div style="text-align:center;padding:4rem;border:1px dashed var(--border);border-radius:var(--radius-lg);">
+      <div style="font-size:3rem;color:var(--text-light);margin-bottom:1rem;"><i class="fas fa-calendar-xmark"></i></div>
+      <h3 style="color:var(--text-muted);font-family:'Outfit',sans-serif;">No upcoming events scheduled</h3>
+      <p style="color:var(--text-light);margin-top:.5rem;">Check back soon or <a href="/contact" style="color:var(--primary);">contact us</a> for bespoke event enquiries.</p>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,11 @@
+<svg width="200" height="200" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Geometric Bird Head -->
+  <path d="M50 20 L80 50 L50 80 L20 50 Z" fill="#0F62FE" />
+  <path d="M50 20 L65 35 L50 50 L35 35 Z" fill="#6366F1" />
+  <!-- Wing 1 -->
+  <path d="M20 50 L0 30 L20 30 Z" fill="#0F62FE" opacity="0.8" />
+  <!-- Wing 2 -->
+  <path d="M80 50 L100 30 L80 30 Z" fill="#0F62FE" opacity="0.8" />
+  <!-- Beak -->
+  <path d="M50 80 L55 90 L45 90 Z" fill="#F1C21B" />
+</svg>

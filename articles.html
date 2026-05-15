@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Articles – AI-Solutions{% endblock %}
+{% block content %}
+<div class="page-hero">
+  <div class="section-label">Insights & News</div>
+  <h1>Articles & Thought Leadership</h1>
+  <p>Stay ahead with the latest thinking on AI, digital employee experience, and the future of work — from the AI-Solutions team.</p>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="grid-3">
+
+      <div class="article-card reveal">
+        <div class="article-img"><img src="{{ url_for('static', filename='img/dex_future_work.png') }}" alt="DEX Trends" style="width:100%;height:100%;object-fit:cover"/></div>
+        <div class="article-body">
+          <span class="article-tag">AI Trends</span>
+          <h3>Why the DEX Revolution Is Unstoppable in 2024</h3>
+          <p>Digital employee experience is no longer a nice-to-have. We explore why organisations that invest in DEX now will outperform their peers by 3× in the next five years.</p>
+          <div class="article-meta"><span><i class="far fa-calendar"></i> March 2024</span><span><i class="far fa-clock"></i> 5 min read</span></div>
+        </div>
+      </div>
+
+      <div class="article-card reveal">
+        <div class="article-img"><img src="{{ url_for('static', filename='img/ai_code_prototype.png') }}" alt="AI Prototyping" style="width:100%;height:100%;object-fit:cover"/></div>
+        <div class="article-body">
+          <span class="article-tag">Prototyping</span>
+          <h3>From Idea to Demo in 5 Days: Our Rapid Prototyping Playbook</h3>
+          <p>A behind-the-scenes look at how our team takes a client's AI concept and transforms it into a working, user-tested prototype in under a week.</p>
+          <div class="article-meta"><span><i class="far fa-calendar"></i> February 2024</span><span><i class="far fa-clock"></i> 7 min read</span></div>
+        </div>
+      </div>
+
+      <div class="article-card reveal">
+        <div class="article-img"><img src="{{ url_for('static', filename='img/tech_office_sunderland_1776868456845.png') }}" alt="AI Service Desk" style="width:100%;height:100%;object-fit:cover"/></div>
+        <div class="article-body">
+          <span class="article-tag">LLMs</span>
+          <h3>How Large Language Models Are Reshaping IT Support</h3>
+          <p>GPT-4 and its successors are transforming the service desk. We break down the practical applications, risks, and governance frameworks every IT leader needs to know.</p>
+          <div class="article-meta"><span><i class="far fa-calendar"></i> January 2024</span><span><i class="far fa-clock"></i> 8 min read</span></div>
+        </div>
+      </div>
+
+      <div class="article-card reveal">
+        <div class="article-img"><img src="{{ url_for('static', filename='img/ai_summit_sunderland_1776868417602.png') }}" alt="APAC Expansion" style="width:100%;height:100%;object-fit:cover"/></div>
+        <div class="article-body">
+          <span class="article-tag">Global Expansion</span>
+          <h3>AI-Solutions Opens APAC Office — What This Means for Our Clients</h3>
+          <p>We are proud to announce the opening of our Singapore office, bringing our DEX solutions closer to rapidly growing markets in Southeast Asia and Australia.</p>
+          <div class="article-meta"><span><i class="far fa-calendar"></i> December 2023</span><span><i class="far fa-clock"></i> 3 min read</span></div>
+        </div>
+      </div>
+
+      <div class="article-card reveal">
+        <div class="article-img"><img src="{{ url_for('static', filename='img/tech_showcase_london_1776868441126.png') }}" alt="Responsible AI" style="width:100%;height:100%;object-fit:cover"/></div>
+        <div class="article-body">
+          <span class="article-tag">Security</span>
+          <h3>Building AI You Can Trust: Our Approach to Responsible AI</h3>
+          <p>Trust is non-negotiable. Here's how AI-Solutions bakes ethics, transparency, and security into every product we ship — from data handling to model governance.</p>
+          <div class="article-meta"><span><i class="far fa-calendar"></i> November 2023</span><span><i class="far fa-clock"></i> 6 min read</span></div>
+        </div>
+      </div>
+
+      <div class="article-card reveal">
+        <div class="article-img"><img src="{{ url_for('static', filename='img/dex_future_work.png') }}" alt="DEX KPIs" style="width:100%;height:100%;object-fit:cover"/></div>
+        <div class="article-body">
+          <span class="article-tag">Analytics</span>
+          <h3>Measuring What Matters: KPIs for Digital Employee Experience</h3>
+          <p>Most organisations track the wrong metrics. We share the 7 DEX KPIs that actually predict employee productivity, retention, and digital adoption outcomes.</p>
+          <div class="article-meta"><span><i class="far fa-calendar"></i> October 2023</span><span><i class="far fa-clock"></i> 6 min read</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}
